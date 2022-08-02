@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" name="chess" id="zoho">
+    <button>click</button>
+    <table>
+
+    </table>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            padding: 30px;
+            border-collapse: collapse;
+        }
+
+        .black {
+            background-color: black;
+
+        }
+
+        .white {
+            background-color: white;
+        }
+    </style>
+    <script>
+        let inp = document.querySelector('input');
+        let btn = document.querySelector('button');
+        let table = document.querySelector('table');
+        let s = 0;
+        btn.addEventListener('click', () => {
+            let value = inp.value;
+            let imp = Math.floor(value / 2);
+            //1.if add no make pefect half if 5==> 2 
+            if (value % 2 == 1) {
+                var x1 = Math.floor(value / 2) + 1
+            }
+            else {
+                var x1 = value / 2;
+            }
+            //1.end
+            //2. that is put value after re enter value change this board
+            if (s == 0) { var copy = value; }
+            if (value != copy) {
+                table.innerHTML = "";
+            }
+            //2.end
+            //3.create chess code
+            for (i = 0; i < value; i++) {
+                var li = document.createElement('tr');
+                table.append(li);
+                for (j = 0; j < x1; j++) {
+                    if (i % 2 == 0) {
+                        var td = document.createElement('td');
+                        if (j != imp)//that is add no print perfect blocks if 5=> means print 5 blocks if remove print 6 blocks all of same
+                            var td2 = document.createElement('td');
+                        td.classList = 'white';
+                        if (j != imp)
+                            td2.classList = 'black';
+                        li.append(td);
+                        if (j != imp)
+                            li.append(td2);
+                    }
+                    else {
+                        var td = document.createElement('td');
+                        if (j != imp)
+                            var td2 = document.createElement('td');
+                        td.classList = 'black';
+                        if (j != imp)
+                            td2.classList = 'white';
+                        li.append(td);
+                        if (j != imp)
+                            li.append(td2);
+                    }
+                }
+            }
+            s = 1;
+        });
+        //3 end
+    </script>
+</body>
+
+</html>
